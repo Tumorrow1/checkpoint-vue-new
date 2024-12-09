@@ -10,8 +10,6 @@ import Pop from '@/utils/Pop';
 
 import { computed, onMounted } from 'vue';
 
-
-const pageSize = 5
 const Posts = computed(() => AppState.Posts);
 const currentPage = computed(() => AppState.currentPage)
 const totalPages = computed(() => AppState.totalPage)
@@ -46,16 +44,9 @@ async function getposts(pageNumber = 1) {
   catch (error) {
     Pop.error(error);
     logger.error(`[]`, error)
-
-
   }
 }
 
-// async function changePage() {
-// getposts(currentPage + 1)
-
-
-// }
 </script>
 
 <template>
@@ -64,10 +55,11 @@ async function getposts(pageNumber = 1) {
 
   <div class="container">
     <nav>
-      <form @submit="serchPosts"><input @change="e => { serch = e.target.value }" type="text">serch</form>
+      <form class="form-control" @submit="serchPosts"><input @change="e => { serch = e.target.value }" type="text">serch
+      </form>
     </nav>
     <section class="row">
-      <div v-for="post in Posts" :key="post.id" class="col-md-2">
+      <div v-for="post in Posts" :key="post.id" class="col-md-12 my-1">
         <PostsCard :postProp="post" />
       </div>
     </section>

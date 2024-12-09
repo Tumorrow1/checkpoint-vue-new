@@ -6,9 +6,8 @@ export class Post {
     this.likeIds = data.likeIds
     this.creator = data.creator
     this.likes = data.likes
-    this.virtual = data.true
     this.id = data.id
-    this.timestamp = data.true
+    this.timestamp = new Date(data.createdAt).toDateString()
     this.name = data.name
 
 

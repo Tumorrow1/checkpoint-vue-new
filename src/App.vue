@@ -11,13 +11,19 @@ AdService.getAds()
   <header>
     <Navbar />
   </header>
-  <main>
-    <div>
-      <div v-for="ad in AppState.Ads" :key="ad.id" class="col-md-12 justify-content-end">
-        <a href=""> <img :src="ad.tall" alt=""></a>
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <div v-for="ad in AppState.Ads" :key="ad.id">
+          <img :src="ad.tall" alt="" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="col-md-10">
+        <router-view />
       </div>
     </div>
-    <router-view />
+
   </main>
   <footer class="bg-light text-dark">
     made by 🥷

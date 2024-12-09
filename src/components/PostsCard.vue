@@ -18,9 +18,20 @@ defineProps({
                 <img :src="postProp.imgUrl" class="creator-img" alt="img">
             </router-link>
 
-            <h3 class="card-titel">{{ postProp.creator.name }}</h3>
+            <div class="d-flex align-items-center justify-content-between">
+                <h3 class="card-titel">
+                    {{ postProp.creator.name }}
+                </h3>
+                <span>
+                    {{ postProp.timestamp }}
+                </span>
+
+            </div>
             <p class="card-text">{{ postProp.body }}</p>
-            <a href="#" class=" d-flex card-link justify-content-end">💗</a>
+            <!-- TODO make the button work - send a post request to the server -->
+            <button class="d-flex btn card-link justify-content-end">
+                💗 {{ postProp.likes.length }}
+            </button>
 
         </div>
     </div>

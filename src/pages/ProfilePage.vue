@@ -20,8 +20,7 @@ const route = useRoute()
 const id = route.params.profileId
 
 const profile = computed(() => AppState.activeProfile)
-const post = computed(() => AppState.Posts)
-// TODO fire off request to get profile by id
+const posts = computed(() => AppState.Posts)
 
 onMounted(() => {
     profileService.getprofile(id)
@@ -29,13 +28,7 @@ onMounted(() => {
     console.log(profile);
 
 })
-
-
-// TODO fire off request to get posts by profile id
-
-// function setProfile(){
-//     profileService.setProfile(props.profileProp)
-// }
+// TODO next buttons
 
 
 </script>
@@ -46,7 +39,7 @@ onMounted(() => {
 
 
     </div>
-    <div class="card col-8 align-content-center" v-if="profile">
+    <div class="card align-content-center" v-if="profile">
         <img :src="profile.coverImg" class="profile-coverImg" alt="">
         <img v-if="profile" :src="profile.picture" class="profile-picture" alt="...">
         <h5 class="card-title">{{ profile.name }}</h5>
@@ -60,7 +53,7 @@ onMounted(() => {
             <a href="#" class="btn btn-primary">Go somewhere</a>
 
             <section class="row">
-                <div v-for="post in Post" :key="post.id" class="col-md-4 mb-3">
+                <div v-for="post in posts" :key="post.id" class="col-md-12 my-3">
                     <PostsCard :post-prop="post" />
                 </div>
             </section>
