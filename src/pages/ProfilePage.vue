@@ -71,7 +71,7 @@ async function getposts(number) {
 
                 <span fw-bold>{{ currentPage }} of {{ totalPages }}</span>
 
-                <button @click="getposts(currentPage + 1)" class="btn btn-primary">Next</button>
+                <button @click="getposts(currentPage + 1)" class="btn btn-primary">next</button>
             </div>
 
         </div>
