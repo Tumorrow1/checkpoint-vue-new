@@ -25,8 +25,16 @@ async function deleatPost() {
         if (!confirmed) { return }
         const postId = props.postProp.id
         await postsService.deleatPost(postId)
+    }
+    catch (error) {
+        Pop.meow(error);
+    }
+}
 
-
+async function likePost() {
+    try {
+        const postId = props.postProp.id
+        await postsService.likePost(postId)
     }
     catch (error) {
         Pop.meow(error);
@@ -59,7 +67,7 @@ async function deleatPost() {
             </div>
             <p class="card-text">{{ postProp.body }}</p>
             <!-- TODO make the button work - send a post request to the server -->
-            <button class="d-flex btn card-link justify-content-end">
+            <button class="d-flex btn card-link justify-content-end" @click="likePost">
                 💗 {{ postProp.likes.length }}
             </button>
 

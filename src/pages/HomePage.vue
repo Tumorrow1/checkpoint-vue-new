@@ -64,12 +64,12 @@ async function getposts(pageNumber = 1) {
     </section>
 
     <div class="d-flex gap-5 align-items-center mb-3">
-      <button @click="getposts(// @ts-ignore
-      currentPage - 1)" class="btn btn-primary">previous</button>
+
+      <button @click="getposts(currentPage - 1)" class="btn btn-primary">previous</button>
+
       <span fw-bold>{{ currentPage }} of {{ totalPages }}</span>
-      <button @click="getposts(// @ts-ignore
-        // @ts-ignore
-      currentPage + 1)" class="btn btn-primary">Next</button>
+
+      <button @click="getposts(currentPage + 1)" class="btn btn-primary">Next</button>
     </div>
   </div>
 

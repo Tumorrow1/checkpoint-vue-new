@@ -21,6 +21,7 @@ const id = route.params.profileId
 
 const profile = computed(() => AppState.activeProfile)
 const posts = computed(() => AppState.Posts)
+const currentPage = computed(() => AppState.currentPage)
 
 onMounted(() => {
     profileService.getprofile(id)
@@ -29,6 +30,12 @@ onMounted(() => {
 
 })
 // TODO next buttons
+
+
+
+async function getposts(number) {
+    profileService.getPosts(id, number)
+}
 
 
 </script>
@@ -57,6 +64,16 @@ onMounted(() => {
                     <PostsCard :post-prop="post" />
                 </div>
             </section>
+
+            <div class="d-flex gap-5 align-items-center mb-3">
+
+                <button @click="getposts(currentPage - 1)" class="btn btn-primary">previous</button>
+
+                <span fw-bold>{{ currentPage }} of {{ totalPages }}</span>
+
+                <button @click="getposts(currentPage + 1)" class="btn btn-primary">Next</button>
+            </div>
+
         </div>
     </div>
 </template>

@@ -20,6 +20,14 @@ class ProfileService {
         AppState.totalPage = response.data.totalPages
 
     }
+
+    async getPosts(profileId, page) {
+        const response = await api.get(`api/profiles/${profileId}/posts?page=${page}`)
+        logger.log(`got profile's posts`, response.data)
+        AppState.Posts = response.data.posts.map(p => new Post(p))
+        AppState.currentPage = response.data.page
+        AppState.totalPage = response.data.totalPages
+    }
 }
 
 
