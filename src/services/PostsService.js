@@ -6,7 +6,13 @@ import { Post } from "@/models/PostsModel.js";
 
 
 
+
 class Postsservice {
+
+    async deleatPost(postId) {
+        const response = await api.delete(`api/posts/${postId}`)
+        logger.log(`deleat car`, response.data)
+    }
     async getProfilesByCreatorId(profileId) {
         const response = await api.get(`api/profiles?creatorId=${profileId}`)
         logger.log(`got profiles by creator Id, response.data`)
@@ -20,6 +26,13 @@ class Postsservice {
         AppState.currentPage = response.data.page
         AppState.totalPage = response.data.totalPages
     }
+
+    async CreatePost(editablePostData) {
+        const response = await api.post(`api/posts`, editablePostData)
+        logger.log(`create Post`, response.data)
+    }
+
+
 }
 
 
